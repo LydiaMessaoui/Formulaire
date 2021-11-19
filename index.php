@@ -45,6 +45,7 @@
                     <div class="action-btn">
                        
                         <input class="btn" type="submit" value="Connexion">
+			 <input class="btn" type="reset" value="Annuler">
                     </div>
                   
                 </form>
