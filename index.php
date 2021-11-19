@@ -1,14 +1,16 @@
 
 
 
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connexion</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="images/png.png" type="image/png">
 </head>
 <body>
         <div class="inner" style=" height: 450px">
@@ -25,29 +27,30 @@
                             <div class="login-register-page">
                                 <div class="welcome-text">
                                     <h3>Heureux de vous revoir !</h3>
-                                    <span>Vous n'avez pas de compte? <a href="FormInscription.php" id="registration" style="text-decoration:none; color: #93c751">Inscrivez-vous !</a></span>
+                                    <span>Vous n'avez pas de compte? <a href="register.html" id="registration" style="text-decoration:none; color: #93c751">Inscrivez-vous !</a></span>
                                 </div>
                               
-                <form action="authentication.php"  role="form" id="login-form"   method="post">
-                <input type="hidden" name="token" value="<?=$_SESSION["token"]?>"/>
+                <form action="authenticate.php" method="post">
+                
                     <i class="fas fa-user icon"></i> 
-                    <input type="text" name="username" placeholder="Identifiant" required>
+                    <input type="text" name="username" placeholder="Identifiant" id="username" required>
                     <i class="fas fa-lock icon"></i> 
-                    <input type="password" name="password" placeholder="Mot de passe" required> 
+                    <input type="password" name="password" placeholder="Mot de passe" id="password" required> 
+                    <input type="hidden" name="token" id="token" value="<?php
+                    //Le champ caché a pour valeur le jeton csrf
+                    echo $token;
+                        ?>"/>
                    
-                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
                    
                     <div class="action-btn">
                        
-                        <button class="btn" name="submit" type="submit" id="submit" form="login-form">Connexion</button>
+                        <input class="btn" type="submit" value="Connexion">
                     </div>
-                    <?php 
-                    if(isset($_GET['m'])){
-                    ?>
-                    <div class="flash-data" data-flashdata="<?=$_GET['m'];?>"></div>
-                    <?php } ?>
+                  
                 </form>
             </div>
         </div>
+
+
 </body>
 </html>
